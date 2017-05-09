@@ -8,7 +8,7 @@ var state = {
 
 var questions = {
     1: {
-        question: 'Question 1',
+        question: 'Who is George Washington?',
         answers: {
             a: 'answer 1',
             b: 'answer 2',
@@ -46,9 +46,21 @@ var questions = {
             d: 'answer 4'
         },
         answer: 'd'
+    },
+    5: {
+        question: 'Question 5',
+        answers: {
+            a: 'answer 1',
+            b: 'answer 2',
+            c: 'answer 3',
+            d: 'answer 4'
+        },
+        answer: 'a'
     }
 };
 
+// templates
+var questionTemplate = '<p class="question"></p>';
 // var gameTemplate = [
 //     '<div class="game-progress">' +
 //         '<p class="game-progress">Question 7 out of 10</p>' +
@@ -87,12 +99,25 @@ var questions = {
 //     '</section>'
 // ];
 
+// helper functions
+function getQuestion() {
+    return questions[1];
+}
 // state modification
 
 
 // DOM manipulation
 function renderGame(gameContainer) {
     showElement(gameContainer);
+    renderQuestion($('.game-question'));
+}
+
+function renderQuestion(element) {
+    var question = getQuestion(questions);
+    console.log(question);
+
+    element.html(question.question);
+
 }
 
 function hideElement(element) {
@@ -114,7 +139,6 @@ function startGame(gameStartButton, gameContainer) {
 $(function() {
     var startButton = $('#game-start'),
         game = $('#game');
-    console.log(startButton, game);
 
     startGame(startButton, game);
 });
