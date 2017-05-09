@@ -62,6 +62,8 @@ var questions = {
 // templates
 var questionTemplate = '<p class="question"></p>';
 
+var answerTemplate = '<label class="answer-label"><input class="answer-input" type="radio" name="answer" value=""></label>'
+
 // var gameTemplate = [
 //     '<div class="game-progress">' +
 //         '<p class="game-progress">Question 7 out of 10</p>' +
@@ -101,7 +103,7 @@ var questionTemplate = '<p class="question"></p>';
 // ];
 
 // helper functions
-function getQuestion() {
+function getQuestionAnswers() {
     // TODO add a "randomiser" to get a random question number. +enhancement id:3 gh:1
     return questions[1];
 }
@@ -116,11 +118,27 @@ function renderGame(gameContainer) {
 }
 
 function renderQuestion(element) {
-    var question = getQuestion(questions);
-    console.log(question);
+    var question = getQuestionAnswers(questions);
 
     element.html(question.question);
 
+    renderAnswers(question.answers);
+}
+
+function renderAnswers(answers) {
+    var radioButtons = [];
+
+    for (var answer in answers) {
+        radioButtons.push(renderAnswer(answer, answers[answer], answerTemplate));
+    };
+    $('.game-answer').html(radioButtons.join(''));
+}
+
+function renderAnswer(answerValue, answer, template) {
+    return '<li>' +
+               '<input type="radio" name="answer" value="' + answerValue + '" required>' +
+                '<label>' + answer + '</label>' +
+            '</li>';
 }
 
 function hideElement(element) {

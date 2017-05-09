@@ -65,16 +65,8 @@ button {
     padding: 1rem;
 }
 
-.game-answer {
-    text-align: left;
-    width: 400px;
-}
-
-.game-answer label {
-    display: block;
-    padding: .5rem;
-    vertical-align: middle;
-    margin: -1;
+.game-answer li {
+    list-style: none;
 }
 
 .game-result p {
