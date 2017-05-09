@@ -8,7 +8,7 @@ var state = {
 
 var questions = {
     1: {
-        question: 'Who is George Washington?',
+        question: 'Who was George Washington?',
         answers: {
             a: 'answer 1',
             b: 'answer 2',
@@ -61,6 +61,7 @@ var questions = {
 
 // templates
 var questionTemplate = '<p class="question"></p>';
+
 // var gameTemplate = [
 //     '<div class="game-progress">' +
 //         '<p class="game-progress">Question 7 out of 10</p>' +
@@ -101,8 +102,10 @@ var questionTemplate = '<p class="question"></p>';
 
 // helper functions
 function getQuestion() {
+    // TODO add a "randomiser" to get a random question number. +enhancement id:3 gh:1
     return questions[1];
 }
+
 // state modification
 
 
