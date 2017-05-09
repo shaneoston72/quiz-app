@@ -18,8 +18,45 @@
         <section id="game-container">
             <button type="button" id="game-start">Start game</button>
 
-            <div id="game"></div>
+            <div id="game" class="hidden">
 
+                <div class="game-question">
+                    <p class="question">This is a question.</p>
+                </div>
+
+                <div class="game-answer">
+                    <label for="answer">Select your answer</label>
+                    <!--TODO change to radio buttons-->
+                    <select name="answer">
+                        <option value="a">A</option>
+                        <option value="b">B</option>
+                        <option value="c">C</option>
+                        <option value="d">D</option>
+                    </select>
+                </div>
+
+                <div class="game-answer-response">
+                    <div class="incorrect-answer">
+                        <p>Your answer is incorrect.</p>
+                        <p>The correct answer is A.</p>
+                    </div>
+                    <div class="correct-answer">
+                        <p class="correct-answer">Your answer is correct.</p>
+                    </div>
+                </div>
+
+                <div class="game-score">
+                    <p class="game-score">2 correct, 5 incorrect</p>
+                </div>
+
+                <div class="game-result">
+                    <p>Game over. Your score is 5 out of X</p>
+                </div>
+
+                <section>
+                    <button type="button">Start a new game</button>
+                </section>
+            </div>
         </section>
 
     </div>

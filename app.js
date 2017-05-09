@@ -92,11 +92,15 @@ var gameTemplate = [
 
 // DOM manipulation
 function renderGame(gameContainer) {
-    gameContainer.html(gameTemplate);
+    showElement(gameContainer);
 }
 
 function hideElement(element) {
     element.detach();
+}
+
+function showElement(element) {
+    element.removeClass();
 }
 
 // event listeners

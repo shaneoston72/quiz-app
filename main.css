@@ -21,8 +21,9 @@ body {
     font-family: 'Lato', sans-serif;
     padding: 20px 0;
 }
+
 .hidden {
-    visibility: hidden;
+    display: none;
 }
 
 #container {
@@ -33,6 +34,7 @@ body {
 
 #game-title {
     font-size: 2rem;
+    font-weight: bold;
     text-align: center;
 }
 
