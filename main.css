@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+:root {
+    --gray: #909090;
+}
+
+/** {*/
+    /*border: 0.5px solid red !important;*/
+/*}*/
+
+html {
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    padding: 20px 0;
+}
+
+#container {
+    margin: 0 auto;
+    width: 960px;
+    text-align: center;
+}
+
+#game-title {
+    font-size: 2rem;
+    text-align: center;
+}
+
+#game {
+    /*padding: .9rem;*/
+}
+
+button {
+    font-size: 1.25rem;
+    margin-top: 2rem ;
+    padding: 1rem;
+
+}
+
+.game-progress {
+    color: var(--gray);
+    padding: 1rem;
+}
+
+.game-score {
+    font-size: 1rem;
+    padding: 1rem;
+}
+
+.game-question {
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 1rem;
+}
+
+.game-answer {
+    text-align: center;
+}
+
+.game-result p {
+    font-size: 1.25rem;
+    font-weight: bold;
+    padding: 1rem 0;
+}
