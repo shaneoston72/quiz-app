@@ -95,9 +95,14 @@ function renderGame(gameContainer) {
     gameContainer.html(gameTemplate);
 }
 
+function hideElement(element) {
+    element.detach();
+}
+
 // event listeners
 function startGame(gameStartButton, gameContainer) {
     gameStartButton.click(function() {
+        hideElement(gameStartButton);
         renderGame(gameContainer);
     });
 }
