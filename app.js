@@ -3,17 +3,19 @@
  */
 // state
 var state = {
-
+    currentAnswer: '',
+    score: 0,
+    incorrectNum: 0
 };
 
 var questions = {
     1: {
         question: 'Who was George Washington?',
         answers: {
-            a: 'answer 1',
-            b: 'answer 2',
-            c: 'answer 3',
-            d: 'answer 4'
+            a: 'First President of the United States',
+            b: 'King of England during the Civil War',
+            c: 'Second Vice-President of the United States',
+            d: 'President Trump\'s Secret Service Director'
         },
         answer: 'a'
     },
@@ -109,7 +111,20 @@ function getQuestionAnswers() {
 }
 
 // state modification
+function answerQuestion(state, answer) {
+    state.currentAnswer = answer;
+    if (questions[1].answer === answer) {
+        console.log('you are correct');
+        state.score++;
 
+        return 'correct';
+    } else {
+        console.log('you are incorrect');
+        state.incorrectNum++;
+        return 'incorrect';
+    }
+
+}
 
 // DOM manipulation
 function renderGame(gameContainer) {
@@ -129,16 +144,32 @@ function renderAnswers(answers) {
     var radioButtons = [];
 
     for (var answer in answers) {
-        radioButtons.push(renderAnswer(answer, answers[answer], answerTemplate));
+        radioButtons.push(renderAnswer(answer, answers[answer]));
     };
-    $('.game-answer').html(radioButtons.join(''));
+    $('.game-answer ul').html(radioButtons.join(''));
 }
 
-function renderAnswer(answerValue, answer, template) {
+function renderAnswer(answerValue, answer) {
     return '<li>' +
                '<input type="radio" name="answer" value="' + answerValue + '" required>' +
                 '<label>' + answer + '</label>' +
             '</li>';
+}
+
+function renderResult(result) {
+    if (result === 'correct') {
+        $('.correct-answer').html(renderCorrectAnswer());
+    } else {
+        $('.incorrect-answer').html(renderIncorrectAnswer());
+    }
+}
+
+function renderCorrectAnswer() {
+    return '<p>Your answer is correct.</p>';
+}
+
+function renderIncorrectAnswer() {
+    return '<p>Your answer is incorrect.</p>';
 }
 
 function hideElement(element) {
@@ -157,9 +188,19 @@ function startGame(gameStartButton, gameContainer) {
     });
 }
 
+function getAnswer() {
+    $("form[name='game-answer']").submit(function(e) {
+        e.preventDefault();
+        var answer = $("input[name='answer']:checked").val();
+        var answerResult = answerQuestion(state, answer);
+        renderResult(answerResult);
+    });
+}
+
 $(function() {
     var startButton = $('#game-start'),
         game = $('#game');
 
     startGame(startButton, game);
+    getAnswer();
 });

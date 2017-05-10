@@ -27,8 +27,8 @@ body {
 }
 
 #container {
-    margin: 0 auto;
-    width: 960px;
+    margin: auto;
+    max-width: 640px;
     text-align: center;
 }
 
@@ -66,7 +66,12 @@ button {
 }
 
 .game-answer li {
+    padding: .5rem;
     list-style: none;
+}
+
+.game-answer li label {
+    margin-right: -3px;
 }
 
 .game-result p {
