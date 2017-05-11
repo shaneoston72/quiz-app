@@ -74,6 +74,11 @@ button {
     padding: 1rem;
 }
 
+.game-answer {
+    text-align: left;
+    width: 440px;
+    margin: auto;
+}
 .game-answer li {
     padding: .5rem;
     list-style: none;
