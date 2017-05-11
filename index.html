@@ -13,29 +13,35 @@
 <body>
     <div id="container">
 
-        <h1 id="game-title">Oracle Exam</h1>
-        <h2 id="game-tag">Let's see how smart you are.</h2>
+        <header id="game-header" role="header">
+            <h1 id="game-title">Oracle Exam</h1>
+            <p>In honour of Gigi</p>
+            <h2 id="game-tag">Let's see how smart you are.</h2>
+        </header>
+
 
         <section id="game-container">
             <button type="button" id="game-start">Start game</button>
 
-            <div class="game-score hidden">
-                <p>Score</p>
-                <p class="score-totals"></p>
-            </div>
-
             <div id="game" class="hidden">
-                <div class="game-question">
 
+                <div class="game-score">
+                    <p>Score</p>
+                    <p class="score-totals">0 correct answers, 0 incorrect answers</p>
                 </div>
 
-                <div class="game-answer">
-                    <form name="game-answer">
+                <div id="game-progress"></div>
+
+                <div class="game-question"></div>
+
+                <div class="game-choices">
+                    <form name="game-choices">
                         <ul></ul>
+                        <div id="submit-choice">
+                            <button type="submit">Submit answer</button>
+                        </div>
                     </form>
                 </div>
-
-                <button type="submit">Submit answer</button>
 
                 <div class="game-answer-response visibility">
                     <div class="incorrect-answer"></div>
@@ -43,14 +49,14 @@
                 </div>
 
                 <div class="game-result">
-                    <p>Game over. Your score is 5 out of X</p>
+                    <p>Game over. Your score is 5 out of X.</p>
                 </div>
 
-                <section>
-                    <button type="button">Start a new game</button>
-                </section>
-
             </div>
+        </section>
+
+        <section>
+            <button type="button">Start a new game</button>
         </section>
     </div>
 

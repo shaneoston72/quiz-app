@@ -105,7 +105,7 @@ function renderChoices(choices) {
     for (var choice in choices) {
         radioButtons.push(renderChoice(choice, choices[choice]));
     }
-    $('.game-answer ul').html(radioButtons.join(''));
+    $('.game-choices ul').html(radioButtons.join(''));
 }
 
 function renderChoice(choiceValue, choice) {
@@ -182,7 +182,7 @@ function startGame(gameStartButton, gameContainer) {
 }
 
 function checkAnswer() {
-    $("form[name='game-answer']").submit(function(e) {
+    $("form[name='game-choices']").submit(function(e) {
         e.preventDefault();
 
         var answer = $("input[name='answer']:checked").val();

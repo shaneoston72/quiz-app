@@ -46,8 +46,15 @@ body {
     padding: 20px;
 }
 
+header p {
+    color: var(--gray);
+    font-size: .75rem;
+    font-style: italic;
+    padding: 10px 0;
+}
+
 #game {
-    border: 0.5px solid var(--gray);
+    border: .5px solid var(--gray);
     border-radius: 4px;
 }
 
@@ -64,28 +71,36 @@ button {
 }
 
 .game-score {
+    margin-top: 2rem;
+}
+
+.game-score p {
     font-size: 1rem;
-    padding: 1rem;
+    padding-top: .5rem;
 }
 
 .game-question {
     font-size: 2rem;
     font-weight: bold;
-    padding: 1rem;
+    padding: 3rem 1rem 1rem;
 }
 
-.game-answer {
+#submit-choice {
+    text-align: center;
+}
+
+.game-choices {
     text-align: left;
     width: 440px;
     margin: auto;
 }
-.game-answer li {
+.game-choices li {
     padding: .5rem;
     list-style: none;
 }
 
-.game-answer li label {
-    margin-right: -3px;
+.game-choices li label {
+    /*margin-right: -3px;*/
 }
 
 .game-result p {
