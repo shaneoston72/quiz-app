@@ -18,6 +18,11 @@
         <section id="game-container">
             <button type="button" id="game-start">Start game</button>
 
+            <div class="game-score hidden">
+                <p>Score</p>
+                <p class="score-totals"></p>
+            </div>
+
             <div id="game" class="hidden">
                 <div class="game-question">
 
@@ -32,14 +37,9 @@
                     </form>
                 </div>
 
-                <div class="game-answer-response">
+                <div class="game-answer-response visibility">
                     <div class="incorrect-answer"></div>
                     <div class="correct-answer"></div>
-                </div>
-
-                <div class="game-score hidden">
-                    <p>Score</p>
-                    <p class="score-totals"></p>
                 </div>
 
                 <div class="game-result">

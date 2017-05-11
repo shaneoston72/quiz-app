@@ -162,6 +162,7 @@ function renderResult(result) {
     } else {
         $('.incorrect-answer').html(renderIncorrectAnswer());
     }
+    toggleVisibility($('.game-answer-response'));
     renderScore(state, $('.score-totals'));
 }
 
@@ -176,8 +177,9 @@ function renderIncorrectAnswer() {
 function renderNextQuestion() {
     setTimeout(function() {
         incrementQuestion(state);
+        toggleVisibility($('.game-answer-response'));
         renderQuestion($('.game-question'));
-    }, 2500);
+    }, 2000);
 }
 
 function renderScore(state, element) {
@@ -198,12 +200,18 @@ function pluraliseAnswer(number, word) {
 
     return (number === 1 ? word : plural);
 }
+
+// TODO refactor two below into one with toggleClass
 function hideElement(element) {
     element.detach();
 }
 
 function showElement(element) {
     element.removeClass();
+}
+
+function toggleVisibility(element) {
+    element.toggleClass('visibility');
 }
 
 // event listeners

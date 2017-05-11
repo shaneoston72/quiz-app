@@ -26,6 +26,10 @@ body {
     display: none;
 }
 
+.visibility {
+    visibility: hidden;
+}
+
 #container {
     margin: auto;
     max-width: 640px;
