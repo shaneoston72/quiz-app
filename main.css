@@ -39,11 +39,16 @@ body {
 #game-title {
     font-size: 2rem;
     font-weight: bold;
-    text-align: center;
+}
+
+#game-tag {
+    font-size: 1.5rem;
+    padding: 20px;
 }
 
 #game {
-    /*padding: .9rem;*/
+    border: 0.5px solid var(--gray);
+    border-radius: 4px;
 }
 
 button {
