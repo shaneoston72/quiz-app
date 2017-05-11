@@ -162,6 +162,7 @@ function renderResult(result) {
     } else {
         $('.incorrect-answer').html(renderIncorrectAnswer());
     }
+    renderScore(state, $('.score-totals'));
 }
 
 function renderCorrectAnswer() {
@@ -177,6 +178,17 @@ function renderNextQuestion() {
         incrementQuestion(state);
         renderQuestion($('.game-question'));
     }, 2500);
+}
+
+function renderScore(state, element) {
+    showElement($('.game-score'));
+
+    var correctTenseForAnswers = (state.score || state.incorrectNum) > 1 ? 'answers' : 'answer';
+
+    var scoreHTML = '<p>' + state.score + ' correct ' + correctTenseForAnswers + ', ' +
+                        state.incorrectNum + ' incorrect ' + correctTenseForAnswers + '</p>';
+
+    element.html(scoreHTML);
 }
 
 function hideElement(element) {
