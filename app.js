@@ -183,14 +183,21 @@ function renderNextQuestion() {
 function renderScore(state, element) {
     showElement($('.game-score'));
 
-    var correctTenseForAnswers = (state.score || state.incorrectNum) > 1 ? 'answers' : 'answer';
-
-    var scoreHTML = '<p>' + state.score + ' correct ' + correctTenseForAnswers + ', ' +
-                        state.incorrectNum + ' incorrect ' + correctTenseForAnswers + '</p>';
+    var scoreHTML = '<p>' + state.score + ' correct ' + pluraliseAnswer(state.score, 'answer') + ', ' +
+                        state.incorrectNum + ' incorrect ' + pluraliseAnswer(state.incorrectNum, 'answer') + '</p>';
 
     element.html(scoreHTML);
 }
 
+function pluraliseAnswer(number, word) {
+    var plural = '';
+
+    if (number === 0 || number > 0 ) {
+        plural = word + 's';
+    }
+
+    return (number === 1 ? word : plural);
+}
 function hideElement(element) {
     element.detach();
 }
