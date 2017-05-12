@@ -135,7 +135,7 @@ function renderResult(result) {
     if (result === 'correct') {
         $('.answer-status').html(renderCorrectAnswer());
     } else {
-        $('.answer-status').html(renderIncorrectAnswer());
+        $('.answer-status').html(renderIncorrectAnswer(state));
     }
     renderScore(state, $('.score-totals'));
 }
@@ -144,8 +144,8 @@ function renderCorrectAnswer() {
     return '<p>Your answer is correct.</p>';
 }
 
-function renderIncorrectAnswer() {
-    return '<p>Your answer is incorrect.</p>';
+function renderIncorrectAnswer(state) {
+    return '<span>Your answer is incorrect. The correct answer is <span>"' + questions[state.currentQuestion].answer + '"</span>.</p>';
 }
 
 function renderNextQuestion(state) {
@@ -156,6 +156,7 @@ function renderNextQuestion(state) {
             incrementQuestion(state);
             $('.answer-status').empty();
             renderQuestion($('.game-question'));
+            // TODO enable submit-choice button here
         }, 1750);
     }
 }
@@ -211,8 +212,11 @@ function startGame(gameStartButton, game) {
 function checkAnswer() {
     $("form[name='game-choices']").submit(function(e) {
         e.preventDefault();
-        var answer = $("input[name='answer']:checked").val();
-        var answerResult = answerQuestion(state, answer);
+
+        // TODO disable the submit button between questions to prevent double clicking.
+        var answer = $("input[name='answer']:checked").val(),
+            answerResult = answerQuestion(state, answer);
+
         renderResult(answerResult);
         renderNextQuestion(state);
     });

@@ -109,6 +109,14 @@ button {
     padding: 2rem 0;
 }
 
+.answer-status {
+    font-size: 1.6rem;
+}
+
+.answer-status span {
+    font-weight: bold;
+}
+
 .visibility {
     display: none;
 }
