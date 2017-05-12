@@ -6,7 +6,13 @@ var state = {
     currentAnswer: '',
     score: 0,
     incorrectNum: 0,
-    currentQuestion: 0
+    currentQuestion: 0,
+    reset: function() {
+        this.currentAnswer = '';
+        this.score = 0;
+        this.incorrectNum = 0;
+        this.currentQuestion = 0;
+    }
 };
 
 var questions = [
@@ -85,9 +91,17 @@ function answerQuestion(state, answer) {
     }
 }
 
+function resetGame(state) {
+    state.reset();
+}
+
 // DOM manipulation
-function renderGame(gameContainer) {
-    showElement(gameContainer);
+function renderGame(game, newGameBool) {
+    if (!newGameBool) {
+        showElement(game);
+    }
+
+    showElement($('#new-game'));
     renderQuestion($('.game-question'));
 }
 
@@ -150,6 +164,13 @@ function renderScore(state, element) {
     element.html(scoreHTML);
 }
 
+function renderNewGame(game, newGameBool) {
+    resetGame(state);
+    console.log(state);
+    renderGame(game, newGameBool);
+    renderScore(state, $('.score-totals'));
+}
+
 function pluraliseAnswer(number, word) {
     var plural = '';
 
@@ -162,11 +183,11 @@ function pluraliseAnswer(number, word) {
 
 // TODO refactor two below into one with toggleClass
 function hideElement(element) {
-    element.detach();
+    element.addClass('hidden');
 }
 
 function showElement(element) {
-    element.removeClass();
+    element.removeClass('hidden');
 }
 
 function toggleVisibility(element) {
@@ -174,10 +195,10 @@ function toggleVisibility(element) {
 }
 
 // event listeners
-function startGame(gameStartButton, gameContainer) {
+function startGame(gameStartButton, game) {
     gameStartButton.click(function() {
         hideElement(gameStartButton);
-        renderGame(gameContainer);
+        renderGame(game);
     });
 }
 
@@ -193,10 +214,17 @@ function checkAnswer() {
     });
 }
 
+function newGame(game) {
+    $('#new-game').click(function() {
+        renderNewGame(game, true);
+    })
+}
+
 $(function() {
     var startButton = $('#game-start'),
         game = $('#game');
 
     startGame(startButton, game);
     checkAnswer();
+    newGame();
 });
