@@ -35,7 +35,8 @@ var questions = [
             d: 'answer 4'
         },
         answer: 'b'
-    },
+    }
+    ,
     {
         question: 'Question 3',
         answers: {
@@ -147,12 +148,25 @@ function renderIncorrectAnswer() {
     return '<p>Your answer is incorrect.</p>';
 }
 
-function renderNextQuestion() {
-    setTimeout(function() {
-        incrementQuestion(state);
-        $('.answer-status').empty();
-        renderQuestion($('.game-question'));
-    }, 2000);
+function renderNextQuestion(state) {
+    if (state.currentQuestion === questions.length - 1) {
+        endGame(state);
+    } else {
+        setTimeout(function() {
+            incrementQuestion(state);
+            $('.answer-status').empty();
+            renderQuestion($('.game-question'));
+        }, 1750);
+    }
+}
+
+function endGame(state) {
+    $('#game').addClass('visibility');
+    $('#game-result').toggleClass('visibility');
+
+    $('#game-result').html(
+        'Game Over. Your final score is ' + state.score + ' correct ' + pluraliseAnswer(state.score, 'answer') +
+            ' out of ' + questions.length + ' questions.');
 }
 
 function renderScore(state, element) {
@@ -200,7 +214,7 @@ function checkAnswer() {
         var answer = $("input[name='answer']:checked").val();
         var answerResult = answerQuestion(state, answer);
         renderResult(answerResult);
-        renderNextQuestion();
+        renderNextQuestion(state);
     });
 }
 
