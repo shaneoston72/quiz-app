@@ -70,10 +70,7 @@ var questions = [
 
 // state modification
 function getQuestionAndAnswers(questions, state) {
-    console.log('currentQuestion before', state.currentQuestion);
-
     return questionObj = state.currentQuestion === 0 ? questions[0] : questions[state.currentQuestion];
-
 }
 
 function incrementQuestion(state) {
@@ -105,8 +102,16 @@ function renderGame(game, newGameBool) {
     renderQuestion($('.game-question'));
 }
 
+function updateProgress(state, element) {
+    var gameProgress = '<p>' + (state.currentQuestion + 1) + ' of ' + questions.length + '</p>';
+
+    element.html(gameProgress);
+}
+
 function renderQuestion(element) {
     var question = getQuestionAndAnswers(questions, state);
+
+    updateProgress(state, $('#game-progress'));
 
     element.html(question.question);
 
@@ -135,7 +140,9 @@ function renderResult(result) {
     } else {
         $('.incorrect-answer').html(renderIncorrectAnswer());
     }
+
     toggleVisibility($('.game-answer-response'));
+
     renderScore(state, $('.score-totals'));
 }
 
