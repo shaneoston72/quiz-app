@@ -110,17 +110,13 @@ function updateProgress(state, element) {
 
 function renderQuestion(element) {
     var question = getQuestionAndAnswers(questions, state);
-
     updateProgress(state, $('#game-progress'));
-
     element.html(question.question);
-
     renderChoices(question.answers);
 }
 
 function renderChoices(choices) {
     var radioButtons = [];
-
     for (var choice in choices) {
         radioButtons.push(renderChoice(choice, choices[choice]));
     }
@@ -136,13 +132,10 @@ function renderChoice(choiceValue, choice) {
 
 function renderResult(result) {
     if (result === 'correct') {
-        $('.correct-answer').html(renderCorrectAnswer());
+        $('.answer-status').html(renderCorrectAnswer());
     } else {
-        $('.incorrect-answer').html(renderIncorrectAnswer());
+        $('.answer-status').html(renderIncorrectAnswer());
     }
-
-    toggleVisibility($('.game-answer-response'));
-
     renderScore(state, $('.score-totals'));
 }
 
@@ -157,17 +150,15 @@ function renderIncorrectAnswer() {
 function renderNextQuestion() {
     setTimeout(function() {
         incrementQuestion(state);
-        toggleVisibility($('.game-answer-response'));
+        $('.answer-status').empty();
         renderQuestion($('.game-question'));
     }, 2000);
 }
 
 function renderScore(state, element) {
     showElement($('.game-score'));
-
     var scoreHTML = '<p>' + state.score + ' correct ' + pluraliseAnswer(state.score, 'answer') + ', ' +
                         state.incorrectNum + ' incorrect ' + pluraliseAnswer(state.incorrectNum, 'answer') + '</p>';
-
     element.html(scoreHTML);
 }
 
@@ -180,11 +171,9 @@ function renderNewGame(game, newGameBool) {
 
 function pluraliseAnswer(number, word) {
     var plural = '';
-
     if (number === 0 || number > 0 ) {
         plural = word + 's';
     }
-
     return (number === 1 ? word : plural);
 }
 
@@ -195,10 +184,6 @@ function hideElement(element) {
 
 function showElement(element) {
     element.removeClass('hidden');
-}
-
-function toggleVisibility(element) {
-    element.toggleClass('visibility');
 }
 
 // event listeners
@@ -212,9 +197,7 @@ function startGame(gameStartButton, game) {
 function checkAnswer() {
     $("form[name='game-choices']").submit(function(e) {
         e.preventDefault();
-
         var answer = $("input[name='answer']:checked").val();
-
         var answerResult = answerQuestion(state, answer);
         renderResult(answerResult);
         renderNextQuestion();
@@ -230,7 +213,6 @@ function newGame(game) {
 $(function() {
     var startButton = $('#game-start'),
         game = $('#game');
-
     startGame(startButton, game);
     checkAnswer();
     newGame();
