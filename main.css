@@ -1,122 +1,60 @@
-@import url('https://fonts.googleapis.com/css?family=Lato');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
 :root {
     --gray: #909090;
 }
 
-/** {
-    border: 0.5px solid red !important;
-}*/
-
 html {
     box-sizing: border-box;
-    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
 }
 
 *, *:before, *:after {
     box-sizing: inherit;
 }
 
-body {
-    font-family: 'Lato', sans-serif;
-    padding: 20px 0;
-}
+* {}
 
-.hidden {
+.visibility {
     display: none;
 }
 
-.visibility {
-    visibility: hidden;
+#container {
+    margin: 0 auto;
+    max-width: 640px;
 }
 
-#container {
-    margin: auto;
-    max-width: 640px;
+#game-header {
+    padding: 2rem;
     text-align: center;
 }
 
 #game-title {
-    font-size: 2rem;
-    font-weight: bold;
+    font-size: 3rem;
 }
 
-#game-tag {
-    font-size: 1.5rem;
-    padding: 20px;
-}
-
-header p {
+#honour {
     color: var(--gray);
-    font-size: .75rem;
-    font-style: italic;
-    padding: 10px 0;
+    font-size: 0.75rem;
+    padding: 0.5rem 0 1rem;
 }
 
-#game {
-    border: .5px solid var(--gray);
-    border-radius: 4px;
+#game-container {
+    border: 0.5px solid red !important;
 }
 
-button {
-    font-size: 1.25rem;
-    margin-top: 2rem ;
-    padding: 1rem;
-
-}
-
-.game-progress {
-    color: var(--gray);
-    padding: 1rem;
-}
-
-.game-score {
-    margin-top: 2rem;
-}
-
-.game-score p {
-    font-size: 1rem;
-    padding-top: .5rem;
-}
-
-.game-question {
-    font-size: 2rem;
-    font-weight: bold;
-    padding: 3rem 1rem 1rem;
-}
-
-#submit-choice {
+#game-start {
     text-align: center;
 }
 
-.game-choices {
-    text-align: left;
-    width: 440px;
-    margin: auto;
-}
-.game-choices li {
-    padding: .5rem;
-    list-style: none;
+#start-button {
+    font-size: 1rem;
+    padding: 15px;
 }
 
-.game-choices li label {
-    /*margin-right: -3px;*/
+#game-board {
+    border: 1px solid black;
+    border-radius: 4px;
 }
 
-.game-result {
-    font-size: 1.5rem;
-    font-weight: bold;
-    padding: 2rem 0;
-}
-
-.answer-status {
-    font-size: 1.6rem;
-}
-
-.answer-status span {
-    font-weight: bold;
-}
-
-.visibility {
-    display: none;
-}
