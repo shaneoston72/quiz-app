@@ -27,10 +27,15 @@ var board = {
     },
     choice: function(choiceKey, choiceValue) {
         return '<li>' +
-                    '<label for="choice-' + choiceKey + '">' +
-                        '<input name="choice" id="choice-' + choiceKey + '" type="checkbox" value="' + choiceKey + '">' + choiceValue +
-                    '</label>' +
-                '<li>';
+                    '<input type="radio" name="choice" value="' + choiceKey + '" required>' +
+                    '<label>' + choiceValue + '</label>' +
+                '</li>';
+    },
+    correctAnswer: function () {
+        return 'That\'s right';
+    },
+    incorrectAnswer: function (state, questions) {
+        return 'Oops. The correct answer is '
     }
 };
 /**
@@ -108,14 +113,24 @@ function getChoicesHTML(choices) {
     var choicesRadioButtons = [];
 
     for (var choice in choices) {
-        choicesRadioButtons.push(board.choice(choice, choices[choice]));
+        if (choices.hasOwnProperty(choice)) {
+            choicesRadioButtons.push(board.choice(choice, choices[choice]));
+        }
     }
 
     return choicesRadioButtons.join('');
 }
 
+function checkSubmittedResponse(state, choice, questions) {
+    if (choice === questions[state.currentQuestion].answer) {
+        state.correctAnswers++;
+        return true;
+    }
 
+    state.incorrectAnswers++;
 
+    return false;
+}
 
 // ---------------------------------------------------------------------------------------------------
 // DOM Manipulators
@@ -167,9 +182,13 @@ function startRoundOfTheGame() {
             choicesElement.html(getChoicesHTML(choices));
         }
 
-function startRound(questions) {
-    var question = getQuestion(state, questionsObj);
+function processChoice(choice) {
+    var result = checkSubmittedResponse(state, choice, questions);
+
+
+    console.log(state);
 }
+
 
 // ---------------------------------------------------------------------------------------------------
 // EVENT LISTENERS
@@ -187,10 +206,25 @@ function startTheGame(startButton, gameBox) {
     });
 }
 
+function handleChoice(submitButton) {
+    submitButton.click(function(event) {
+        event.preventDefault();
+
+        var choice = $("input[name='choice']:checked").val();
+
+        toggleVisibility(submitButton);
+
+        processChoice(choice);
+    });
+}
+
 //---------------------------------------------------------------------------------------------------
 $(function() {
-    var startButton = $('#start-button'),
-        gameBox = $('#game-box');
+    var gameBox = $('#game-box'),
+        startButton = $('#start-button'),
+        submitButton = $('#submit-button');
+
 
     startTheGame(startButton, gameBox);
+    handleChoice(submitButton);
 });

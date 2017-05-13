@@ -44,7 +44,8 @@ html {
     text-align: center;
 }
 
-#start-button {
+#start-button,
+#submit-button {
     font-size: 1rem;
     padding: 15px;
 }
@@ -64,8 +65,8 @@ html {
     justify-content: space-between;
 }
 
-#game-question-choices {
-    padding: 50px 25px;
+#game-question {
+    padding: 50px 25px 25px;
 }
 
 #game-question {
@@ -74,11 +75,16 @@ html {
 }
 
 #game-choices {
-    padding-top: 30px;
+    padding: 0 30px;
 }
 
 #game-choices li {
     padding: 5px 0;
+}
+
+#game-submit-answer {
+    padding-top: 15px;
+    text-align: center;
 }
 
 
