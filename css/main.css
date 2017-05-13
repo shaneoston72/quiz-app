@@ -40,10 +40,6 @@ html {
     padding: 0.5rem 0 1rem;
 }
 
-#game-container {
-    border: 0.5px solid red !important;
-}
-
 #game-start {
     text-align: center;
 }
@@ -56,5 +52,34 @@ html {
 #game-board {
     border: 1px solid black;
     border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
 }
+
+#game-stats {
+    color: var(--gray);
+    display: flex;
+    font-size: 0.75rem;
+    justify-content: space-between;
+}
+
+#game-question-choices {
+    padding: 50px 25px;
+}
+
+#game-question {
+    font-size: 2rem;
+    text-align: center;
+}
+
+#game-choices {
+    padding-top: 30px;
+}
+
+#game-choices li {
+    padding: 5px 0;
+}
+
+
 
