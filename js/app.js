@@ -77,37 +77,37 @@ var questions = [
         },
         answer: 'b'
     }
-    // ,
-    // {
-    //     question: 'Question 3',
-    //     choices: {
-    //         a: 'answer 1',
-    //         b: 'answer 2',
-    //         c: 'answer 3',
-    //         d: 'answer 4'
-    //     },
-    //     answer: 'c'
-    // },
-    // {
-    //     question: 'Question 4',
-    //     choices: {
-    //         a: 'answer 1',
-    //         b: 'answer 2',
-    //         c: 'answer 3',
-    //         d: 'answer 4'
-    //     },
-    //     answer: 'd'
-    // },
-    // {
-    //     question: 'Question 5',
-    //     choices: {
-    //         a: 'answer 1',
-    //         b: 'answer 2',
-    //         c: 'answer 3',
-    //         d: 'answer 4'
-    //     },
-    //     answer: 'a'
-    // }
+    ,
+    {
+        question: 'Question 3',
+        choices: {
+            a: 'answer 1',
+            b: 'answer 2',
+            c: 'answer 3',
+            d: 'answer 4'
+        },
+        answer: 'c'
+    },
+    {
+        question: 'Question 4',
+        choices: {
+            a: 'answer 1',
+            b: 'answer 2',
+            c: 'answer 3',
+            d: 'answer 4'
+        },
+        answer: 'd'
+    },
+    {
+        question: 'Question 5',
+        choices: {
+            a: 'answer 1',
+            b: 'answer 2',
+            c: 'answer 3',
+            d: 'answer 4'
+        },
+        answer: 'a'
+    }
 ];
 
 // ---------------------------------------------------------------------------------------------------
