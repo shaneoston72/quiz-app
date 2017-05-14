@@ -20,6 +20,10 @@ html {
     display: none;
 }
 
+/*.hidden {*/
+    /*display: none;*/
+/*}*/
+
 #container {
     margin: 0 auto;
     max-width: 640px;
@@ -44,8 +48,7 @@ html {
     text-align: center;
 }
 
-#start-button,
-#submit-button {
+button {
     font-size: 1rem;
     padding: 15px;
 }
@@ -55,7 +58,7 @@ html {
     border-radius: 4px;
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    padding: 20px 20px 30px;
 }
 
 #game-stats {
@@ -85,6 +88,23 @@ html {
 #game-submit-answer {
     padding-top: 15px;
     text-align: center;
+}
+
+#game-answer-response {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 15px 0;
+    text-align: center;
+}
+
+#game-result {
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+#result {
+    line-height: 40px;
+    padding-bottom: 15px;
 }
 
 
