@@ -188,13 +188,12 @@ function openTheGameBox(gameBox) {
 
 /**
  * startRoundOfTheGame sets game board and displays a question
- * @param state
- * @param questionsObj
+ *
  */
 function startRoundOfTheGame() {
     showProgress($('#game-progress'));
     showScore($('#game-score'));
-    showQuestionAndChoices($('#game-question'), $('#game-choices ul'));
+    showQuestionAndChoices($('#game-question'), $('#choices-ul'));
     hideElement($('#game-answer-response'));
 }
 
